@@ -68,6 +68,9 @@ document.addEventListener('keydown',e=>{const modal=[$('sourceModal'),$('sortMod
 
 $('galleryToggle').onclick=()=>{const on=$('cameraGallery').classList.toggle('expanded');$('galleryToggle').setAttribute('aria-expanded',String(on));$('galleryToggle').setAttribute('aria-label',on?'Collapse album panel':'Expand album panel')};
 $('galleryToggle').onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();$('galleryToggle').click()}};
+$('galleryEnable').onclick=()=>{$('galleryAccess').hidden=true;$('galleryPhotos').hidden=false;sessionStorage.setItem('imageSearchAlbumDemoAccess','granted')};
+if(sessionStorage.getItem('imageSearchAlbumDemoAccess')==='granted'){$('galleryAccess').hidden=true;$('galleryPhotos').hidden=false}
 $('galleryChoosePhoto').onclick=chooseAlbumPhoto;
+document.querySelectorAll('[data-gallery-sample]').forEach(button=>button.onclick=()=>loadSample(button.dataset.gallerySample));
 let galleryY=null;$('galleryToggle').addEventListener('pointerdown',e=>{galleryY=e.clientY;$('galleryToggle').setPointerCapture(e.pointerId)});$('galleryToggle').addEventListener('pointerup',e=>{if(galleryY!==null&&Math.abs(e.clientY-galleryY)>25){const on=e.clientY<galleryY;$('cameraGallery').classList.toggle('expanded',on);$('galleryToggle').setAttribute('aria-expanded',String(on));$('galleryToggle').setAttribute('aria-label',on?'Collapse album panel':'Expand album panel')}galleryY=null});
 $('openFilters').onclick=$('designerFilter').onclick=$('categoryFilter').onclick=()=>toast('Filter options follow text search in the product experience.');
