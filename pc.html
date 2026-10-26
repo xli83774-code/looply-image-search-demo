@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+ <title>Looply · PC Visual Search</title><link rel="stylesheet" href="pc.css?v=20261021-2"><link rel="stylesheet" href="pc-fixes.css?v=20261026-1">
+</head>
+<body>
+ <header class="site-header">
+  <div class="topbar"><span>Authenticated luxury, made accessible.</span><nav><button>Help</button><button>EN⌄</button><button aria-label="Account">♙</button><button aria-label="Favorites">♡</button><button aria-label="Shopping bag">▢</button></nav></div>
+  <div class="search-row">
+   <a class="wordmark" href="pc.html" aria-label="Looply home">LOOPLY</a>
+   <div class="search-shell" id="searchShell">
+    <button class="query-thumb" id="queryThumb" hidden aria-label="Adjust image search"><img id="queryThumbImage" src="assets/editorial.png" alt="Current image search"><span>×</span></button>
+    <input id="searchInput" value="" placeholder="Search for anything" aria-label="Search" autocomplete="off">
+    <span class="image-mode-label" id="imageModeLabel" hidden>Search by image</span>
+    <button class="clear-search" id="clearSearch" aria-label="Clear search" hidden>×</button>
+    <button class="camera-entry" id="cameraEntry" aria-label="Search by image"><svg viewBox="0 0 24 24"><path d="M8 6l1.4-2h5.2L16 6h3a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h3z"/><circle cx="12" cy="13" r="4"/></svg></button>
+    <button class="submit-search" id="submitSearch" aria-label="Search"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg></button>
+    <p class="search-paste-error" id="searchPasteError" role="alert" hidden></p>
+   </div>
+   <button class="sell-button">SELL</button>
+  </div>
+  <nav class="main-nav"><button>New Arrivals</button><button>Designers</button><button>Bags</button><button>Jewelry</button><button>Accessories</button><button>Watches</button><button>Sale</button></nav>
+ </header>
+
+ <main id="homePage" class="pc-home">
+  <section class="pc-hero"><img src="assets/style.png" alt="Vintage accessories"><div class="pc-hero-copy"><p>THE LOOPLY EDIT</p><h1>Iconic vintage.<br>Exceptional finds.</h1><span>Discover your next favorite, with a story of its own.</span><button id="exploreHome">Explore Finds →</button></div></section>
+  <section class="pc-home-edit"><h2>Curated for you</h2><div id="homeProducts" class="pc-home-products"></div></section>
+ </main>
+ <main id="resultsPage" hidden>
+  <div class="result-toolbar">
+   <div class="result-heading"><img id="resultThumb" alt="Search image" hidden><h1 id="resultTitle">Results for “Speedy” <span>(629 items)</span></h1></div>
+   <div><button id="toggleFilters">⇆ &nbsp; Hide Filter</button><button>⇅ &nbsp; Sort by</button><button class="recommended">Recommended⌄</button></div>
+  </div>
+  <div class="catalog-layout">
+   <aside class="filters" id="filters">
+    <section><h2>Category <span>⌃</span></h2><strong>Luggage &amp; Bags</strong><label><input type="checkbox"> Crossbody Bag</label><label><input type="checkbox"> Shoulder Bag</label><label><input type="checkbox"> Top Handle Bag</label></section>
+    <section><h2>Series <span>⌃</span></h2><label><input type="checkbox"> NEO SPEEDY</label><label><input type="checkbox"> SPEEDY</label><label><input type="checkbox"> SPEEDY CUBE</label><label><input type="checkbox"> SPEEDY SOFT</label><label><input type="checkbox"> SPEEDY TRUNK</label></section>
+    <section><h2>Condition <span>⌃</span></h2><label><input type="checkbox"> Excellent</label><label><input type="checkbox"> Very Good</label><label><input type="checkbox"> Good</label><label><input type="checkbox"> Fair</label></section>
+   </aside>
+   <section class="catalog" id="catalog" aria-live="polite"></section>
+  </div>
+ </main>
+
+ <div class="backdrop" id="uploadModal" hidden>
+  <section class="upload-modal" role="dialog" aria-modal="true" aria-labelledby="uploadTitle">
+   <button class="modal-close" data-close="uploadModal" aria-label="Close">×</button>
+   <h2 id="uploadTitle">Search with an image</h2><p>Upload a photo to find similar pieces on Looply.</p>
+   <label class="dropzone" id="dropzone"><input id="fileInput" type="file" accept="image/jpeg,image/png,image/webp"><svg viewBox="0 0 24 24"><path d="M12 16V4m0 0L7 9m5-5 5 5M5 15v4h14v-4"/></svg><strong>Drag an image here or <u>browse a file</u></strong></label>
+   <p id="uploadError" role="alert" hidden></p>
+   <div class="divider"><span>or</span></div>
+   <form class="url-row" id="urlForm"><input id="imageUrl" type="url" placeholder="Paste an image link" aria-label="Image URL"><button>Search</button></form>
+   <p class="paste-hint">Copied a screenshot? Press Ctrl/Cmd + V anywhere on this page to search.</p>
+  </section>
+ </div>
+
+ <div class="backdrop" id="targetModal" hidden>
+  <section class="target-modal" role="dialog" aria-modal="true" aria-labelledby="targetTitle">
+   <header><div><h2 id="targetTitle">Adjust search target</h2><p>Select an item or adjust the frame.</p></div><button class="modal-close" data-close="targetModal" aria-label="Close">×</button></header>
+   <div class="target-workspace">
+    <div class="target-photo"><img id="targetImage" src="assets/editorial.png" alt="Image search source"><div class="selection-box" id="selectionBox"><i></i><i></i><i></i><i></i></div></div>
+    <aside><h3>Items in this photo</h3><div class="target-options"><button class="selected" data-target="Bag"><span class="crop bag"></span><b>Bag</b></button><button data-target="Hat"><span class="crop hat"></span><b>Hat</b></button><button data-target="Shoes"><span class="crop shoes"></span><b>Shoes</b></button></div><p>Drag the frame on the image to fine-tune the search area.</p></aside>
+   </div>
+   <footer><button class="cancel" data-close="targetModal">Cancel</button><button class="update" id="updateResults">Update results</button></footer>
+  </section>
+ </div>
+
+ <script src="pc.js?v=20261026-1"></script>
+</body></html>
