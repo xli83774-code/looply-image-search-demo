@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Looply · Visual Search</title><link rel="stylesheet" href="style.css?v=20261026-3"></head>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Looply · Visual Search</title><link rel="stylesheet" href="style.css?v=20261026-4"></head>
 <body>
 <aside class="review">
  <img src="assets/logo.svg" class="review-logo" alt="Looply"><div class="version">Mobile experience · 01</div>
@@ -25,6 +25,7 @@
   <div class="photo-area" id="photoArea"><div class="photo-wrap" id="photoWrap"><img id="sourcePhoto" alt="Your search image" draggable="false"><div id="selection" tabindex="0" role="group" aria-label="Search area. Drag to move; drag corners to resize. Arrow keys move the selection."><i class="corner nw" data-corner="nw"></i><i class="corner ne" data-corner="ne"></i><i class="corner sw" data-corner="sw"></i><i class="corner se" data-corner="se"></i></div></div></div>
   <div class="crop-hint" id="cropHint">Drag the corners to adjust your search</div>
   <div class="recognition-status" id="recognitionStatus" role="status" aria-live="polite"><i></i><span>Searching by image…</span></div>
+  <button class="search-cancel" id="cancelImageSearch" type="button">Cancel</button>
   <section class="result-sheet" id="resultSheet" aria-label="Visual search results">
    <button class="sheet-handle" id="sheetHandle" aria-label="Expand results" aria-expanded="false"><span></span></button>
    <div class="result-heading" id="resultHeading"><button id="editCrop" class="crop-preview" aria-label="Adjust image selection"><canvas id="cropThumb" width="100" height="100"></canvas><span data-icon="crop"></span></button><div><h2>Similar finds</h2><p id="resultStatus" role="status" aria-live="polite">Finding similar pieces…</p></div><button class="icon" id="expandResults" aria-label="Expand results" data-icon="up"></button></div>
@@ -45,4 +46,4 @@
  <div class="toast" id="toast" role="status" hidden></div><div class="home-indicator"></div>
  <input type="file" id="albumInput" accept="image/*" hidden><input type="file" id="cameraInput" accept="image/*" capture="environment" hidden>
 </main>
-<script src="app.js?v=20261026-6"></script></body></html>
+<script src="app.js?v=20261026-7"></script></body></html>
